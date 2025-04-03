@@ -5,8 +5,15 @@ pragma circom 2.1.4;
 
 template Equality() {
    // Your Code Here..
+   signal input a[3];
+   signal output c;
 
-   
+   var e;
+   var f;
+   e = a[0] - a[1];
+   f = a[1] - a[2];
+
+   c <== (1 - f) * (1 - e);
 }
 
 component main = Equality();

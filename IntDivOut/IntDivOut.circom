@@ -9,7 +9,6 @@ template IntDivOut(n) {
     signal input numerator;
     signal input denominator;
     signal output out;
-
 }
 
 component main = IntDivOut(252);

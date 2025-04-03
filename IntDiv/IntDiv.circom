@@ -16,6 +16,21 @@ template IntDiv(n) {
     signal input quotient;
     signal input remainder;
 
+    // Ensure numerator = quotient * denominator + remainder
+    signal product;
+    product <== quotient * denominator;
+    numerator === product + remainder;
+
+    // Ensure 0 <= remainder < denominator
+    component lessThan = LessThan(n);
+    lessThan.in[0] <== remainder;
+    lessThan.in[1] <== denominator;
+    lessThan.out === 1; // remainder < denominator
+
+    // Optionally ensure denominator != 0 (to avoid division by zero)
+    component isZero = IsZero();
+    isZero.in <== denominator;
+    isZero.out === 0; // denominator must not be 0
 }
 
 component main = IntDiv(252);
