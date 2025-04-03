@@ -18,6 +18,16 @@ template FourBitBinary() {
     signal input in[4];
     signal input n;
 
+    var coefficient = 1;
+    var num = 0;
+    for(var i = 0; i < 4; i++){
+        0 === in[i] * (in[i] - 1); // binary
+        
+        num += in[i] * coefficient;
+        coefficient *= 2;
+    }
+
+    n === num;
 }
 
 component main{public [n]} = FourBitBinary();
